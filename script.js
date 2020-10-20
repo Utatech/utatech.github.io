@@ -4,6 +4,8 @@ function onClick(element) {
   document.getElementById("modal01").style.display = "block";
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
+  var lingText = document.getElementById("lings");
+  lingText.innerHTML = element.ling;
 }
 
 // Change style of navbar on scroll

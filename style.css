@@ -1,5 +1,6 @@
 * {
     -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
 }
 
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
@@ -25,13 +26,13 @@ body, html {
 
 /* Second image (Portfolio) */
 .bgimg-2 {
-  background-image: url("img/parallax2.jpg");
+  background-image: url("img/bg11.jpg");
   min-height: 400px;
 }
 
 /* Third image (Contact) */
 .bgimg-3 {
-  background-image: url("img/parallax3.jpg");
+  background-image: url("img/bg22.jpg");
   min-height: 400px;
 }
 
