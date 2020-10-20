@@ -1,858 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-	  <title>Happy Eid Mubarak</title>
-	  <meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.css">
-	  <style type="text/css">
-	  	body{
-	  		overflow: hidden;
-	  		background: black;
-	  		width: 100%;
-	  		height: 100vh;
-	  	}
-	  	.bg{
-	  		width: 100%;
-	  		height: 100vh;
-	  		position: absolute;
-	  		z-index: -1;
-	  	}
-	  	.ubuntu{
-	  		background: linear-gradient(to left,#8942A8,#BA382F);
-	  		opacity: 0;
-	  	}
-	  	.dawn{
-	  		background: linear-gradient(0deg, rgba(133,26,0,1) 3%, rgba(255,51,0,1) 19%, rgba(181,103,47,1) 45%, rgba(52,142,200,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.morning{
-	  		background: linear-gradient(0deg, rgba(255,230,113,1) 0%, rgba(82,167,255,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.noon{
-	  		background: linear-gradient(0deg, rgba(22,183,255,1) 0%, rgba(14,116,223,1) 58%, rgba(1,7,170,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.afternoon{
-	  		background: linear-gradient(0deg, rgba(161,133,255,1) 0%, rgba(0,118,226,1) 61%, rgba(1,81,170,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.sunset{
-	  		background: linear-gradient(0deg, rgba(195,75,42,1) 0%, rgba(129,29,121,1) 8%, rgba(89,1,170,1) 29%, rgba(1,5,79,1) 90%);
-	  		opacity: 0;
-	  	}
-	  	.evening{
-	  		background: linear-gradient(0deg, rgba(0,7,128,1) 0%, rgba(0,3,54,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.midnight{
-	  		background: linear-gradient(0deg, rgba(0,3,60,1) 0%, rgba(0,0,0,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.red{
-	  		background: linear-gradient(90deg, rgba(255,0,255,1) 0%, rgba(255,0,0,1) 50%, rgba(255,255,0,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.green{
-	  		background: linear-gradient(90deg, rgba(255,255,0,1) 0%, rgba(0,255,0,1) 50%, rgba(0,255,255,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.blue{
-	  		background: linear-gradient(90deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 50%, rgba(255,0,255,1) 100%);
-	  		opacity: 0;
-	  	}
-	  	.custom{
-	  		background-color: #0079FF;
-	  		opacity: 0;
-	  	}
-	  	.jam,.ucapan,.quotes{
-	  		margin: 0px;
-	  		padding: 0px;
-	  		position: absolute;
-	  		color: #fff;
-	  		transition: all 5s ease, color 1s ease;
-	  	}
-	  	.jam{
-	  		font-size: 25pt;
-	  		left: 50%;
-	  		bottom: 50%;
-	  		text-align: center;
-	  		transform: translate(-50%,calc(50% + 100px));
-	  	}
-	  	.ucapan{
-	  		font-size: 25pt;
-	  		left: 50%;
-	  		bottom: 50%;
-	  		text-align: center;
-	  		transform: translate(-50%,calc(50% + 100px));
-	  	}
-	  	
-	  	.quotes{
-	  		left: 50%;
-	  		bottom: 0;
-	  		transform: translate(-50%,0%);
-	  		text-align: center;
-	  		font-size: 15pt;
-	  		text-shadow: 0px 0px 10px #000;
-	  		z-index: 2;
-	  	}
-	  	.kontrol{
-	  		margin: 20px;
-	  		background: #fff;
-	  		padding: 20px;
-	  		position: absolute;
-	  		width: 200px;
-	  		border-radius: 10px;
-	  		left: -220px;
-	  		transition: all 1 ease;
-	  		z-index: 99;
-	  	}
-	  	.panah{
-	  		content: '';
-	  		width: 10px;
-	  		height: 10px;
-	  		position: absolute;
-	  		top: calc(50% - 5px);
-	  		right: -30px;
-	  		border: 2px solid rgba(255,255,255,0.2);
-	  		border-bottom: none;
-	  		border-left: none;
-	  		border-radius: 2px;
-	  		border-top-left-radius: 3px;
-	  		border-bottom-right-radius: 3px;
-	  		transform: rotate(45deg);
-	  		z-index: 50;
-	  	}
-	  	#color-picker{
-	  		width: 100%;
-	  	}
-	  	.note{
-	  		color: white;
-	  		transition: all 2s ease;
-	  		opacity: 0;
-	  		position: absolute;
-	  		top: 50%;
-	  		left: 50%;
-	  		transform: translate(-50%,-50%);
-	  		font-size: 20pt;
-	  		text-align: center;
-	  		width: 100vh;
-	  	}
-  		.lope{
-  			position: absolute;
-  			top: 0;
-  			left: 0;
-  			width: 100%;
-  			height: 100%;
-  			overflow: hidden;
-  			z-index: -1;
-  		}
-  		.lope li{
-  			position: absolute;
-  			display: block;
-  			list-style: none;
-  			background: rgba(255,255,255,0.2);
-  			animation: animate 20s linear infinite; 
-  			bottom: -10px; /*INI BUAT NAIK DARI BAWAH KE ATAS*/
-  			transition: all 1s ease;
-  		}
-  		.lope li:nth-child(1){
-  			left: 86%;
-  			animation-delay: 0s;
-  		}
+<html>
+<head>
+	<title>W3.CSS Template</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="chart.css">
+	<link rel="stylesheet" href="w3.css">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/icon.ico">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.easy-pie-chart/1.0.1/jquery.easy-pie-chart.js"></script>
+</head>
+<body>
 
-  		.lope li:nth-child(2){
-  			left: 12%;
+<!-- Navbar (sit on top) -->
+<div class="w3-top uta-uppercase">
+  <div class="w3-bar" style="background-color: #404040;color: #f1f1f1;" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item w3-button">HOME</a>
+    <a href="#profile" class="w3-bar-item w3-button w3-hide-small">Profile</a>
+    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small">PROYEK</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-hide-small">KONTAK</a>
+  </div>
 
-  			animation-delay: 1.5s;
-  			animation-duration: 10s;
-  		}
-  		.lope li:nth-child(3){
-  			left: 70%;
-  			animation-delay: 5.5s;
-  		}
-  		.lope li:nth-child(4){
-  			left: 42%;
-  			animation-delay: 3.5s;
-  			animation-duration: 15s; 
-  		}
-  		.lope li:nth-child(5){
-  			left: 15%;
-  			animation-delay: 2.5s;
-  		}
-  		.lope li:nth-child(6){
-  			left: 5%;
-  			animation-delay: 4s;
-  		}
-  		.lope li:nth-child(7){
-  			left: 95%;
-  			animation-delay: 8.2s;
-  		}
-  		/*DARI SINI*/
-		.lope li::before, .lope li::after {
-		  content: "";
-		  position: absolute;
-		  top: 0;
-		  width: 52px;
-		  height: 80px;
-		  border-radius: 50px 50px 0 0;
-		  background: white;
-		}
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#profile" class="w3-bar-item w3-button" onclick="toggleFunction()">Profile</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PROYEK</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
+  </div>
+</div>
 
-		.lope li::before {
-		  left: 50px;
-		  transform: rotate(-45deg);
-		  transform-origin: 0 100%;
-		}
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;top: 45%;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity uta-uppercase">Putra Prawira<span class="w3-hide-small"> Website</span></span>
+  </div>
+</div>
 
-		.lope li::after {
-		  left: 0;
-		  transform: rotate(45deg);
-		  transform-origin: 100% 100%;
-		}
-  		/*Sampe Sini*/
-  		.kotak{
-  			position: absolute;
-  			width: 600px;
-  			height: 600px;
-  			display: flex;
-  			left:50%;
-	  		bottom: 50%;
-	  		transform: translate(-50%,50%) scale(0);
-	  		transition: 3s all ease;
-  		}
-  		.kotak span:nth-child(1){
-  			position: absolute;
-  			top: 0;
-  			left: 0;
-  			width: 100%;
-  			height: 100%;
-  			border: 2px solid #fff;
-  			transition: 0.5s;
-  			animation: animate2 6s linear infinite;
-  		}
-  		.kotak span:nth-child(2){
-  			position: absolute;
-  			top: 0;
-  			left: 0;
-  			width: 100%;
-  			height: 100%;
-  			border: 2px solid #fff;
-  			transition: 0.5s;
-  			animation: animate3 8s linear infinite;
-  		}
-  		.kotak span:nth-child(3){
-  			position: absolute;
-  			top: 0;
-  			left: 0;
-  			width: 100%;
-  			height: 100%;
-  			border: 2px solid #fff;
-  			transition: 0.5s;
-  			animation: animate3 10s linear infinite;
-  		}
-  		.kotak span:nth-child(4){
-  			position: absolute;
-  			top: 0;
-  			left: 0;
-  			width: 100%;
-  			height: 100%;
-  			border: 3px solid #fff;
-  			transition: 0.5s;
-  			animation: animate2 10s linear infinite;
-  		}
+<!-- Container (profile Section) -->
+<div class="w3-content w3-container w3-padding-64" id="profile">
+  <h3 class="w3-center uta-uppercase">Profile</h3>
+  <p class="w3-center"><em>I love code</em></p>
 
-  		@keyframes animate{
-  			100%{
-  				transform: translateY(0) rotate(0deg);
-  				opacity: 1;
-  			}
-  			0%{
-  				transform: translateY(-150vh) rotate(360deg);
-  				opacity: 0;
-  			}
-  		}
-  		@keyframes animate2{
-  			0%{
-  				transform:rotate(0deg);
-  			}
-  			100%{
-  				transform:rotate(360deg);
-  			}
-  		}
-  		@keyframes animate3{
-  			0%{
-  				transform:rotate(360deg);
-  			}
-  			100%{
-  				transform:rotate(0deg);
-  			}
-  		}
-  		@media only screen and (max-width: 900px), screen and (max-height: 700px) {
-  			.jam,.ucapan{
-  				transition: all 1s ease;
-  			}
-			.jam{
-		  		font-size: 50pt;
-		  		transform: translate(-50%,calc(50% - 0px));
-		  	}
-		  	.ucapan{
-		  		font-size: 15pt;
-		  		transform: translate(-50%,calc(50% + 50px));
-		  	}
-		  	.quotes,.note{
-		  		font-size: 15pt;
-		  	}
-		  	.kotak{
-	  			width: 300px;
-	  			height: 300px;
-	  		}
-  		}
-  		@media only screen and (max-width: 500px){
-  			.ucapan{
-		  		font-size: 10pt;
-		  	}
-		  	.quotes{
-		  		font-size: 7pt;
-		  	}
-		  	.note{
-		  		font-size: 10pt;
-		  	}
-  		}
-	  </style>
-	</head>
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <img src="img/profile.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+      <p class="uta-uppercase"><b><i class="fa w3-margin-right"></i>Putra Prawira</b></p><br>
+    </div>
 
-	<body onload="init()" oncontextmenu='return false;' onkeydown='return false;' onmousedown='return false;' ondragstart='return false' onselectstart='return false' style='-moz-user-select: none; cursor: default;'
->
-		<div class="bg ubuntu"></div>
-		<div class="bg dawn"></div>
-		<div class="bg morning"></div>
-		<div class="bg noon"></div>
-		<div class="bg afternoon"></div>
-		<div class="bg sunset"></div>
-		<div class="bg evening"></div>
-		<div class="bg midnight"></div>
-		<div class="bg red"></div>
-		<div class="bg green"></div>
-		<div class="bg blue"></div>
-		<div class="bg custom"></div>
-		<div class="container" style="width: auto;">
-			<ul class="lope">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-			<div class="kotak">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-			<div class="ucapan" style="bottom: 100px;">	
-				<p id="myParagraph">
-					Saya Putra Prawira dan Keluarga Mengucapkan Mohon Maaf Lahir & Batin
-				</p>
-				<script src="baffle.min.js"></script>
-				<script type="text/javascript">
-					const btnReveal = document.querySelector("#btnReveal");
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p>Welcome to my website. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+</div>
 
-					const b = baffle("#myParagraph",{
+<div class="w3-row w3-center w3-dark-grey w3-padding-16">
+  <div class="w3-quarter w3-section">
+    HTML<br><br>
+    <div class="c100 p75 green w3-center">
+	      <span>75%</span>
+	      <div class="slice">
+	        <div class="bar"></div>
+	        <div class="fill"></div>
+	      </div>
+	 </div>
+  </div>
+  <div class="w3-quarter w3-section">
+    PHP<br><br>
+    <div class="c100 p50 orange w3-center">
+	      <span>50%</span>
+	      <div class="slice">
+	        <div class="bar"></div>
+	        <div class="fill"></div>
+	      </div>
+	 </div>
+  </div>
+  <div class="w3-quarter w3-section">
+    JAVASCRIPT<br><br>
+    <div class="c100 p40 pink w3-center">
+	      <span>40%</span>
+	      <div class="slice">
+	        <div class="bar"></div>
+	        <div class="fill"></div>
+	      </div>
+	 </div>
+  </div>
+  <div class="w3-quarter w3-section">
+    CSS<br><br>
+    <div class="c100 p60 blue w3-center">
+	      <span>60%</span>
+	      <div class="slice">
+	        <div class="bar"></div>
+	        <div class="fill"></div>
+	      </div>
+	 </div>
+  </div>
+</div>
 
-						characters:'supercalifragilisticexpialidocious'
-					});
-					b.start();
-				    b.reveal(2000);		
-				</script>
-			</div>
-			<div class="jam" id="time">
-				00:00:00
-			</div>
-			<div class="ucapan" id="quote"></div>
-		</div>
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
-		<script type="text/javascript">
-			function init(){
-				init_auto();
-				readMode();
-				readColor();
-			}
-			baffleEffect = baffle('.note', {
-			    characters: 'supercalifragilisticexpialidocious',
-			    speed: 150
-			});
-			function writeNote(isi){
-				$(".note").text(isi).css("opacity","1");
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide uta-uppercase">Proyek</span>
+  </div>
+</div>
 
-				baffle('.note')
-					.reveal(2000)
-				    .start()
-				    .set({
-				        characters: '░░█ /<▒▓▒ ▒░▒█/ █/▒ ▒▓/█▒ ▓▒░▓ ██░ ▒░▓░ ▒░▓█',
-				        speed: 150
-				    });
-				    localStorage.setItem("manualColor", "#0079FF");
-			}
-			$(".panah").click(function(){
-				if (tombol==false){
-					$(".panah").css("transform","rotate(225deg)");
-					$(".kontrol").animate({left: "0px"});
-					tombol=true;
-				}else if (tombol==true){
-					$(".panah").css("transform","rotate(45deg)");
-					$(".kontrol").animate({left: "-220px"});
-					tombol=false;
-				}
-			});
-			auto=true;
-			cek=false;
-			$(".kontrol").click(function(){
-				gaming=false;
-				if($("#customRadio0").prop('checked')){
-					if(!cek){
-						init_auto();
-					}
-					auto=true;
-					localStorage.setItem("mode", "auto");
-					cek=true;
-				}
-				else{
-					auto=false;
-					cek=false;
-				}
-				if($("#customRadio1").prop('checked')){
-					ubuntu();
-					localStorage.setItem("mode", "ubuntu");
-				}
-				else if($("#customRadio2").prop('checked')){
-					dawn();
-					localStorage.setItem("mode", "dawn");
-				}
-				else if($("#customRadio3").prop('checked')){
-					morning();
-					localStorage.setItem("mode", "morning");
-				}
-				else if($("#customRadio4").prop('checked')){
-					noon();
-					localStorage.setItem("mode", "noon");
-				}
-				else if($("#customRadio5").prop('checked')){
-					afternoon();
-					localStorage.setItem("mode", "afternoon");
-				}
-				else if($("#customRadio6").prop('checked')){
-					sunset();
-					localStorage.setItem("mode", "sunset");
-				}
-				else if($("#customRadio7").prop('checked')){
-					evening();
-					localStorage.setItem("mode", "evening");
-				}
-				else if($("#customRadio8").prop('checked')){
-					midnight();
-					localStorage.setItem("mode", "midnight");
-				}
-				else if($("#customRadio10").prop('checked')){
-					manual();
-					localStorage.setItem("mode", "manual");
-				}
-				else if($("#customRadio9").prop('checked')){
-					gaming1();
-					localStorage.setItem("mode", "gaming1");
-					gaming=true;
-				}
-				if (gaming==false){
-					nofill();
-				}
-			});
-			function ubuntu(){
-				$(".ubuntu").animate({opacity:"1"},1000);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				white();
-			}
-			function dawn(){
-				$(".dawn").animate({opacity:"1"},1000);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				black();
-			}
-			function morning(){
-				$(".morning").animate({opacity:"1"},1000);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				black();
-			}
-			function noon(){
-				$(".noon").animate({opacity:"1"},1000);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				black();
-			}
-			function afternoon(){
-				$(".afternoon").animate({opacity:"1"},1000);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				black();
-			}
-			function sunset(){
-				$(".sunset").animate({opacity:"1"},1000);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				white();
-			}
-			function evening(){
-				$(".evening").animate({opacity:"1"},1000);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				white();
-			}
-			function midnight(){
-				$(".midnight").animate({opacity:"1"},1000);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				white();
-			}
-			function red(){
-				$(".jam").css("color","#F00");
-				$(".ucapan").css("color","#F00");
-				$(".kotak span").css("border-color","#F00");
-				$(".lope li").css("background","#000");
-				$(".red").animate({opacity:"1"},1000);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				white();
-			}
-			function green(){
-				$(".jam").css("color","#0F0");
-				$(".ucapan").css("color","#0F0");
-				$(".kotak span").css("border-color","#0F0");
-				$(".lope li").css("background","#000");
-				$(".green").animate({opacity:"1"},1000);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				white();
-			}
-			function blue(){
-				$(".jam").css("color","#00F");
-				$(".ucapan").css("color","#00F");
-				$(".kotak span").css("border-color","#00F");
-				$(".lope li").css("background","#000");
-				$(".blue").animate({opacity:"1"},1000);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".custom").animate({opacity:"0"},500);
-				white();
-			}
-			function manual(){
-				$(".custom").animate({opacity:"1"},1000);
-				$(".midnight").animate({opacity:"0"},500);
-				$(".dawn").animate({opacity:"0"},500);
-				$(".ubuntu").animate({opacity:"0"},500);
-				$(".morning").animate({opacity:"0"},500);
-				$(".noon").animate({opacity:"0"},500);
-				$(".afternoon").animate({opacity:"0"},500);
-				$(".sunset").animate({opacity:"0"},500);
-				$(".evening").animate({opacity:"0"},500);
-				$(".red").animate({opacity:"0"},500);
-				$(".green").animate({opacity:"0"},500);
-				$(".blue").animate({opacity:"0"},500);
-				white();
-			}
-			warna=1;
-			function gaming1(){
-				if (gaming){
-					fillblack();
-					if (warna==1){
-						red();
-					}
-					else if (warna==2) {
-						green();
-					}
-					else if (warna==3) {
-						blue();
-					}
-					warna+=1;
-					if (warna==4){
-						warna=1;
-					}
-				}
-			}
-			setInterval(gaming1, 4000);
-			function black(){
-				$(".jam").css("color","#000");
-				$(".ucapan").css("color","#000");
-				$(".quotes").css("color","#000");
-				$(".quotes").css("text-shadow","0px 0px 10px #FFF");
-				$(".kotak span").css("border-color","#000");
-				$(".lope li").css("background","#000");
-			}
-			function fillblack(){
-				$(".kotak span").css("background","#000");
-			}
-			function nofill(){
-				$(".kotak span").css("background","unset");
-			}
-			function white(){
-				$(".jam").css("color","#FFF");
-				$(".ucapan").css("color","#FFF");
-				$(".quotes").css("color","#FFF");
-				$(".quotes").css("text-shadow","0px 0px 10px #000");
-				$(".kotak span").css("border-color","#FFF");
-				$(".lope li").css("background","#FFF");
-			}
-			function debug(){
-				console.log('debug');
-			}
+<!-- Container (Portfolio Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center uta-uppercase">Daftar proyek</h3>
+  <p class="w3-center"><em>Click gambar untuk memperbesar</em></p><br>
 
-			var txt = 'Hari Kemanangan Telah Tiba';
-			var txt2 = 'txt';
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m3">
+      <img src="img/p1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist over the mountains">
+    </div>
 
-			function checkTime(i) {
-				if (i < 10) {
-						i = "0" + i;
-					}
-				return i;
-				}
-			var H;
-			var M;
-			var S;
-			var starting=true;
-			function startTime() {
-				var today = new Date();
-				var h = today.getHours();
-				var m = today.getMinutes();
-				var s = today.getSeconds();
+    <div class="w3-col m3">
+      <img src="img/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Coffee beans">
+    </div>
 
-				H=h;
-				M=m;
-				S=s;
+    <div class="w3-col m3">
+      <img src="img/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Bear closeup">
+    </div>
 
-				if (H<5){
-					txt='Hari Kemenangan Telah Tiba';
-					if(txt != txt2 && !starting)
-						document.getElementById("quote").innerHTML = txt;
-					txt2=txt;
-				}
-				else if(H<9){
-					txt='Hari Kemanangan Telah Tiba';
-					if(txt != txt2 && !starting)
-						document.getElementById("quote").innerHTML = txt;
-					txt2=txt;
-				}
-				else if(H<24){
-					txt='Hari Kemenangan Telah Tibaa';
-					if(txt != txt2 && !starting)
-						document.getElementById("quote").innerHTML = txt;
-					txt2=txt;
-				}
-				starting=false;
+    <div class="w3-col m3">
+      <img src="img/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quiet ocean">
+    </div>
+  </div>
+</div>
 
-				if (auto && m==0 && s==0){
-					if ((h>23) || (h<4)){
-						midnight();
-					}
-					else if(h<6){
-						dawn();
-					}
-					else if(h<9){
-						morning();
-					}
-					else if(h<17){
-						noon();
-					}
-					else if(h<18){
-						afternoon();
-					}
-					else if(h<19){
-						sunset();
-					}
-					else if(h<23){
-						evening();
-					}
-				}
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
 
-				// add a zero in front of numbers<10
-				m = checkTime(m);
-				s = checkTime(s);
-				document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
-				t = setTimeout(function() {
-				startTime()
-				}, 500);
-			}
-			startTime();
-			function init_auto(){
-				if ((H>23) || (H<4)){
-					midnight();
-				}
-				else if(H<6){
-					dawn();
-				}
-				else if(H<9){
-					morning();
-				}
-				else if(H<17){
-					noon();
-				}
-				else if(H<18){
-					afternoon();
-				}
-				else if(H<19){
-					sunset();
-				}
-				else if(H<23){
-					evening();
-				}
-				else{
-					midnight();
-				}
-			}
-			var i = 0;
-			var speed = 50;
-			
-			function typeWriter() {
-				if (i < txt.length) {
-					var o = (i/txt.length*2);
-					var o = o.toFixed(0);
-					var o2 = o-1;
-					if (o2<0)
-						o2=0;
-					var o3 = String(o);
-					var p = "translate(-50%,50%) scale("+o2+")";
-					document.getElementById("quote").innerHTML += txt.charAt(i);
-					i++;
-					$(".jam").css("opacity",o3);
-					$(".kotak").css("transform",p).css("opacity",o2);
-					setTimeout(typeWriter, speed);
-				}
-			}
-			typeWriter();
-		</script>
-		<script type='text/javascript'>
-		//<![CDATA[
-		shortcut={all_shortcuts:{},add:function(a,b,c){var d={type:"keydown",propagate:!1,disable_in_input:!1,target:document,keycode:!1};if(c)for(var e in d)"undefined"==typeof c[e]&&(c[e]=d[e]);else c=d;d=c.target,"string"==typeof c.target&&(d=document.getElementById(c.target)),a=a.toLowerCase(),e=function(d){d=d||window.event;if(c.disable_in_input){var e;d.target?e=d.target:d.srcElement&&(e=d.srcElement),3==e.nodeType&&(e=e.parentNode);if("INPUT"==e.tagName||"TEXTAREA"==e.tagName)return}d.keyCode?code=d.keyCode:d.which&&(code=d.which),e=String.fromCharCode(code).toLowerCase(),188==code&&(e=","),190==code&&(e=".");var f=a.split("+"),g=0,h={"`":"~",1:"!",2:"@",3:"#",4:"$",5:"%",6:"^",7:"&",8:"*",9:"(",0:")","-":"_","=":"+",";":":","'":'"',",":"<",".":">","/":"?","\\":"|"},i={esc:27,escape:27,tab:9,space:32,"return":13,enter:13,backspace:8,scrolllock:145,scroll_lock:145,scroll:145,capslock:20,caps_lock:20,caps:20,numlock:144,num_lock:144,num:144,pause:19,"break":19,insert:45,home:36,"delete":46,end:35,pageup:33,page_up:33,pu:33,pagedown:34,page_down:34,pd:34,left:37,up:38,right:39,down:40,f1:112,f2:113,f3:114,f4:115,f5:116,f6:117,f7:118,f8:119,f9:120,f10:121,f11:122,f12:123},j=!1,l=!1,m=!1,n=!1,o=!1,p=!1,q=!1,r=!1;d.ctrlKey&&(n=!0),d.shiftKey&&(l=!0),d.altKey&&(p=!0),d.metaKey&&(r=!0);for(var s=0;k=f[s],s<f.length;s++)"ctrl"==k||"control"==k?(g++,m=!0):"shift"==k?(g++,j=!0):"alt"==k?(g++,o=!0):"meta"==k?(g++,q=!0):1<k.length?i[k]==code&&g++:c.keycode?c.keycode==code&&g++:e==k?g++:h[e]&&d.shiftKey&&(e=h[e],e==k&&g++);if(g==f.length&&n==m&&l==j&&p==o&&r==q&&(b(d),!c.propagate))return d.cancelBubble=!0,d.returnValue=!1,d.stopPropagation&&(d.stopPropagation(),d.preventDefault()),!1},this.all_shortcuts[a]={callback:e,target:d,event:c.type},d.addEventListener?d.addEventListener(c.type,e,!1):d.attachEvent?d.attachEvent("on"+c.type,e):d["on"+c.type]=e},remove:function(a){var a=a.toLowerCase(),b=this.all_shortcuts[a];delete this.all_shortcuts[a];if(b){var a=b.event,c=b.target,b=b.callback;c.detachEvent?c.detachEvent("on"+a,b):c.removeEventListener?c.removeEventListener(a,b,!1):c["on"+a]=!1}}},shortcut.add("Ctrl+U",function(){top.location.href="#"});
-		//]]>
-		</script>
-		<script src="baffle.min.js"></script>
+<!-- Third Parallax Image with Portfolio Text -->
+<div class="bgimg-3 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">KONTAK</span>
+  </div>
+</div>
 
-	</body>
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-32" id="contact">
+  <h3 class="w3-center uta-uppercase">Hubungi</h3>
+
+  <div class="w3-row w3-padding-32 w3-section">
+      <div class="w3-large w3-center w3-margin-bottom">
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i>Depok, Indonesia<br>
+        <i class="fa fa-whatsapp fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i>Wa: <a href="http://wa.me/+6289510247203">+62 89510247203</a><br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prawiraputra64@gmail.com">Prawiraputra64@gmail.com</a><br>
+      </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity">
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+
+  <div class="w3-xlarge w3-section">
+    <a href="http://fb.me/putra603"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <a href="https://www.instagram.com/pp.uta7/"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://github.com/Utatech"><i class="fa fa-github w3-hover-opacity"></i></a>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
 </html>
