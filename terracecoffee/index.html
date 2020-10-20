@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Terrace Coffee</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lemonada">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="script.js"></script>
+
+<style>
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+  font-family: "Lato", sans-serif}
+.mySlides {display: none}
+.w3-lemonada {font-family: 'Lemonada', cursive;}
+.border{
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+  opacity: 0.7;
+}
+
+.flex-center {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+</style>
+<body id="data">
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-lemonada">TERRACE</a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">Tentang</a>
+    <a href="#product" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">Produk</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">Kontak</a>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#product" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Produk</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Kontak</a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Tentang</a>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- Automatic Slideshow Images -->
+  <div class="w3-display-container w3-center">
+    <img src="img/bg.jpg" style="width:100%;">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3 class="border" >{{Header}}</h3>
+    </div>
+  </div>
+
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="about">
+    <h2 class="w3-wide">{{Judul Tentang}}</h2>
+    <p class="w3-opacity"><i>{{Slogan Tentang}}</i></p>
+    <p class="w3-justify">{{Isi Tentang}}</p>
+    <div class="w3-row w3-padding-16">
+      <div class="w3-quarter">
+        <p>{{nama1}}</p>
+        <img src="{{Foto1}}" class="w3-round w3-margin-bottom" alt="Random Name" alt="Random Name" style="width:60%" height="115">
+      </div>
+      <div class="w3-quarter">
+        <p>{{nama2}}</p>
+        <img src="{{Foto2}}" class="w3-round w3-margin-bottom" alt="Random Name" alt="Random Name" style="width:60%" height="115">
+      </div>
+      <div class="w3-quarter">
+        <p>{{nama3}}</p>
+        <img src="{{Foto3}}" class="w3-round" alt="Random Name" style="width:60%" height="115">
+      </div>
+      <div class="w3-quarter">
+        <p>{{nama4}}</p>
+        <img src="{{Foto4}}" class="w3-round" alt="Random Name" style="width:60%" height="115">
+      </div>
+    </div>
+  </div>
+
+<!-- Pricing Section -->
+<div class="w3-container w3-center w3-dark-grey" style="padding:64px 16px" id="product">
+  <h3 class="w3-lemonada">{{Judul Produk}}</h3>
+  <p class="w3-large">{{Slogan Produk}}</p>
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-black w3-xlarge w3-padding-16">{{Judul Produk1}}</li>
+        <li class="w3-padding-16"><b>Deskripsi</b></li>
+        <li class="w3-padding-64">{{Deskripsi Produk1}}</li>
+        <li class="w3-padding-16">
+          <h2 class="w3-wide">{{Harga Produk1}}</h2>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <a href="#contact"><button class="w3-button w3-black w3-padding-large">{{Tombol Pesan}}</button></a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-red w3-xlarge w3-padding-32">{{Judul Produk2}}</li>
+        <li class="w3-padding-16"><b>Deskripsi</b></li>
+        <li class="w3-padding-64">{{Deskripsi Produk2}}</li>
+        <li class="w3-padding-16">
+          <h2 class="w3-wide">{{Harga Produk3}}</h2>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <a href="#contact"><button class="w3-button w3-black w3-padding-large">{{Tombol Pesan}}</button></a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-black w3-xlarge w3-padding-16">{{Judul Produk3}}</li>
+        <li class="w3-padding-16"><b>Deskripsi</b></li>
+        <li class="w3-padding-64">{{Deskripsi Produk3}}</li>
+        <li class="w3-padding-16">
+          <h2 class="w3-wide">{{Harga Produk3}}</h2>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <a href="#contact"><button class="w3-button w3-black w3-padding-large">{{Tombol Pesan}}</button></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-32" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center w3-lemonada">{{Judul Kontak}}</h2>
+    <p class="w3-opacity w3-center"><i>{{Slogan Kontak}}</i></p>
+    <div class="w3-row w3-center w3-padding-small">
+        <i class="w3-center fa fa-whatsapp" style="width:30px"></i> Wa: <a href="{{Wa}}">{{Nama Wa}}</a><br>
+        <i class="w3-center fa fa-instagram" style="width:30px"> </i> Ig: <a href="{{Ig}}">{{Nama Ig}}</a><br>
+    </div>
+  </div>
+  
+<!-- End Page Content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-16 w3-center w3-opacity w3-dark-grey w3-xlarge">
+  <a href="{{Wa}}"><i class="fa fa-whatsapp w3-hover-opacity"></i></a>
+  <a href="{{Ig}}"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+  <p class="w3-small">Created by <a href="https://wa.me/+6289510247203" target="_blank">Uta</a></p>
+</footer>
+
+</body>
+<script type="text/javascript">
+    function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+</script>
+<!-- Rebuild5 -->
+<script>
+  document.getElementById("data").setAttribute("data-spreadsheet-api", "https://script.google.com/macros/s/AKfycbzrTnyrQk-yjyxd95ytevN111eUhOCj8-oXp9bJ3zyiHY6I1ho/exec");
+</script>
+</html>
